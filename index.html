@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>FitTrack | Personal Fitness Companion</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- Auth Modal -->
+<div id="authOverlay" class="auth-overlay">
+  <div class="auth-card">
+    <h2>🏋️ FitTrack</h2>
+    <p>Sign in or create account</p>
+    <input type="text" id="authUsername" placeholder="Username" autocomplete="off">
+    <input type="password" id="authPassword" placeholder="Password">
+    <button id="loginBtn">Log In</button>
+    <button id="signupBtn">Sign Up</button>
+    <div id="authError" class="error-msg"></div>
+  </div>
+</div>
+
+<!-- Main app -->
+<div id="mainApp" class="main-content">
+<div class="container">
+  <div class="header">
+    <div class="logo">
+      <h1>🏋️‍♂️ FitTrack</h1>
+      <p>unified fitness & nutrition hub</p>
+    </div>
+    <div class="user-bar">
+      <span id="currentUserSpan"></span>
+      <button id="logoutMainBtn" class="logout-btn">🚪 Logout</button>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="card">
+      <h3>🎯 Daily Calorie Goal</h3>
+      <div><span class="goal-value" id="goalDisplay">--</span> <span>kcal / day</span></div>
+      <div class="goal-control">
+        <input type="number" id="goalInput" placeholder="e.g., 2200" value="2200">
+        <button id="setGoalBtn">Update goal</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>📊 Today's snapshot</h3>
+      <div class="stats-row"><span>🔥 Calories burned:</span> <strong id="todayBurned">0</strong> kcal</div>
+      <div class="stats-row"><span>🍽️ Calories consumed:</span> <strong id="todayConsumed">0</strong> kcal</div>
+      <div class="stats-row"><span>⚖️ Net vs goal:</span> <strong id="netStatus">--</strong></div>
+      <div class="progress-text" id="progressTip">✔️ Keep moving</div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3>📈 Weekly summary · calories consumed vs burned</h3>
+    <canvas id="weeklyChart" width="800" height="350"></canvas>
+  </div>
+
+  <div class="logs-grid">
+    <div class="log-panel">
+      <h4>🏃‍♂️ Log Workout</h4>
+      <div class="form-row">
+        <select id="workoutType">
+          <option>Running</option><option>Cycling</option><option>Weight Training</option><option>Yoga</option><option>Walking</option>
+        </select>
+        <input type="number" id="workoutDuration" placeholder="Duration (min)">
+        <input type="number" id="workoutCalories" placeholder="Calories burned">
+        <input type="date" id="workoutDate">
+      </div>
+      <button id="addWorkoutBtn">➕ Add workout</button>
+      <div class="entry-list" id="workoutList"></div>
+    </div>
+    <div class="log-panel">
+      <h4>🥗 Log Meal</h4>
+      <div class="form-row">
+        <input type="text" id="mealName" placeholder="Food item">
+        <input type="number" id="mealCalories" placeholder="Calories (kcal)">
+        <input type="date" id="mealDate">
+      </div>
+      <button id="addMealBtn">➕ Add meal</button>
+      <div class="entry-list" id="mealList"></div>
+    </div>
+  </div>
+  <footer>FitTrack — secure local accounts · each user's data is private to their browser</footer>
+</div>
+</div>
+</body>
+</html>

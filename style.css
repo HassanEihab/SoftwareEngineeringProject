@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a2c3e;
+    min-height: 100vh;
+    /* Background image: person running in garden (free stock photo from Pexels) */
+    background-image: url('https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  /* Dark overlay for readability */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+  
+  /* Auth Overlay & Forms */
+  .auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .auth-card {
+    background: white;
+    border-radius: 32px;
+    padding: 32px 28px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+  
+  .auth-card h2 {
+    margin-bottom: 8px;
+    color: #1f4e3c;
+  }
+  
+  .auth-card input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 60px;
+    border: 1px solid #cbdde6;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+  
+  .auth-card button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background: #2c7a4d;
+  }
+  
+  .auth-card button:last-of-type {
+    background: #4f6f8f;
+  }
+  
+  .error-msg {
+    color: #c23a3a;
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+  
+  /* Header user area */
+  .user-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .logout-btn {
+    background: #e0e8ef;
+    color: #2c5a4a;
+    box-shadow: none;
+  }
+  
+  .logout-btn:hover {
+    background: #cdd9e2;
+  }
+  
+  .main-content {
+    display: none;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    border-bottom: 2px solid rgba(207, 223, 237, 0.6);
+    padding-bottom: 16px;
+  }
+  
+  .logo h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f0f9f0, #cfe8dc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .logo p {
+    font-size: 0.85rem;
+    color: #e0f0ea;
+    font-weight: 500;
+  }
+  
+  /* Dashboard cards (semi-transparent for background visibility) */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(2px);
+    border-radius: 28px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #1f4e3c;
+  }
+  
+  .goal-value {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #2c7a4d;
+  }
+  
+  .goal-control {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  
+  .goal-control input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 60px;
+    border: 1px solid #cbdde6;
+    background: white;
+  }
+  
+  button {
+    background: #2c7a4d;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: inherit;
+  }
+  
+  button:hover {
+    background: #1f6140;
+    transform: scale(0.97);
+  }
+  
+  .stats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-weight: 500;
+  }
+  
+  .progress-text {
+    font-size: 0.9rem;
+    background: #eef3f0cc;
+    border-radius: 40px;
+    padding: 6px 12px;
+    text-align: center;
+    margin-top: 12px;
+  }
+  
+  .chart-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(2px);
+    border-radius: 28px;
+    padding: 20px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  
+  canvas {
+    max-height: 320px;
+    width: 100%;
+  }
+  
+  .logs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 28px;
+  }
+  
+  .log-panel {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(2px);
+    border-radius: 28px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  
+  .log-panel h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1f4e3c;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .form-row input, .form-row select {
+    padding: 10px 12px;
+    border-radius: 24px;
+    border: 1px solid #cbdde6;
+    flex: 1;
+    background: white;
+  }
+  
+  .entry-list {
+    max-height: 320px;
+    overflow-y: auto;
+    margin-top: 15px;
+  }
+  
+  .entry-item {
+    background: #fafeffcc;
+    border-bottom: 1px solid #e5edf2;
+    padding: 12px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .delete-btn {
+    background: none;
+    color: #bf6b6b;
+    padding: 4px 10px;
+    border-radius: 30px;
+    background: #fff2f0;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background: #fadbd8;
+    color: #b13e3e;
+    transform: none;
+  }
+  
+  .empty-msg {
+    color: #5d7f8c;
+    text-align: center;
+    padding: 24px;
+    font-style: italic;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.75rem;
+    color: #dee9ef;
+    text-shadow: 0 0 2px #1a2c3e;
+  }
+  
+  @media (max-width: 700px) {
+    body { padding: 0; }
+    .container { padding: 16px; }
+    .form-row { flex-direction: column; }
+  }
